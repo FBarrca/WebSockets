@@ -28,7 +28,12 @@ var wss = new WebSocketServer({
     server: httpsServer
 });
 
+
+
 wss.on('connection', function connection(ws) {
+    console.log("Reply to handshake request. Ok lets switch to websocket")
+    ws.on("open", () => console.log("Opened ws con!!!"))
+    ws.on("close", () => console.log("CLOSED ws con!!!"))
     ws.on('message', function incoming(message) {
         console.log('received: %s', message);
     });
